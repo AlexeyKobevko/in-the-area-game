@@ -167,63 +167,6 @@ const SwipeDrawer = styled(SwipeableDrawer)(({ theme }) => ({
   // '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, display: 'flex' },
 }));
 
-const buildMenu = (
-  arr: [
-    key: string,
-    { title: string; icon: OverridableComponent<SvgIconTypeMap> & { muiName: string } },
-  ][],
-) => {
-  return arr.map(([key, { icon: Icon, title }]) => (
-    <ListItem key={key} disablePadding sx={{ display: { xs: 'flex', sm: 'block' } }}>
-      <ListItemButton
-        sx={[
-          {
-            minHeight: 48,
-            px: 2.5,
-          },
-          open
-            ? {
-                justifyContent: 'initial',
-              }
-            : {
-                justifyContent: 'center',
-              },
-        ]}
-      >
-        <ListItemIcon
-          sx={[
-            {
-              minWidth: 0,
-              justifyContent: 'center',
-            },
-            open
-              ? {
-                  mr: 3,
-                }
-              : {
-                  mr: 'auto',
-                },
-          ]}
-        >
-          <Icon />
-        </ListItemIcon>
-        <ListItemText
-          primary={title}
-          sx={[
-            open
-              ? {
-                  opacity: 1,
-                }
-              : {
-                  opacity: 0,
-                },
-          ]}
-        />
-      </ListItemButton>
-    </ListItem>
-  ));
-};
-
 export default function ResponsiveDrawer() {
   const [open, setOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -245,6 +188,63 @@ export default function ResponsiveDrawer() {
 
   const handleDrawerOpen = () => {
     setOpen(true);
+  };
+
+  const buildMenu = (
+    arr: [
+      key: string,
+      { title: string; icon: OverridableComponent<SvgIconTypeMap> & { muiName: string } },
+    ][],
+  ) => {
+    return arr.map(([key, { icon: Icon, title }]) => (
+      <ListItem key={key} disablePadding sx={{ display: { xs: 'flex', sm: 'block' } }}>
+        <ListItemButton
+          sx={[
+            {
+              minHeight: 48,
+              px: 2.5,
+            },
+            open
+              ? {
+                  justifyContent: 'initial',
+                }
+              : {
+                  justifyContent: 'center',
+                },
+          ]}
+        >
+          <ListItemIcon
+            sx={[
+              {
+                minWidth: 0,
+                justifyContent: 'center',
+              },
+              open
+                ? {
+                    mr: 3,
+                  }
+                : {
+                    mr: 'auto',
+                  },
+            ]}
+          >
+            <Icon />
+          </ListItemIcon>
+          <ListItemText
+            primary={title}
+            sx={[
+              open
+                ? {
+                    opacity: 1,
+                  }
+                : {
+                    opacity: 0,
+                  },
+            ]}
+          />
+        </ListItemButton>
+      </ListItem>
+    ));
   };
 
   const primaryMenuContent = buildMenu(Object.entries(primaryMenuList));
@@ -327,6 +327,7 @@ export default function ResponsiveDrawer() {
         }}
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
+        onOpen={handleDrawerToggle}
       >
         {drawer}
       </SwipeDrawer>
