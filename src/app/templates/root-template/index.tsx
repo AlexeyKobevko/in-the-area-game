@@ -122,11 +122,11 @@ export const RootTemplate = ({
             <List>{buildMenu(Object.entries(SECONDARY_MENU_LIST))}</List>
           </div>
         </Navigation>
-        <main>
+        <Box component="main" sx={{ width: '100%' }}>
           <Toolbar />
           {children}
           <Toolbar />
-        </main>
+        </Box>
       </Box>
 
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
