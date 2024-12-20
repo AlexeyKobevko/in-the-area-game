@@ -35,7 +35,7 @@ const SwipeableDrawer = styled(MuiSwipeableDrawer, {
   },
 }));
 
-export const MobileNavigation = ({
+export const Navigation = ({
   children,
   drawerWidth,
   open,
@@ -47,6 +47,7 @@ export const MobileNavigation = ({
 
   return (
     <SwipeableDrawer
+      drawerWidth={drawerWidth}
       variant="temporary"
       open={open}
       onTransitionEnd={onTransitionEnd}
@@ -58,7 +59,6 @@ export const MobileNavigation = ({
         '& .MuiDrawer-paper': {
           boxSizing: 'border-box',
           width: drawerWidth,
-          // display: { xs: 'flex', md: 'none' },
         },
       }}
       disableBackdropTransition={!iOS}

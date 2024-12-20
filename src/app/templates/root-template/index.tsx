@@ -6,7 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { MobileHeader, MobileNavigation, SpeedDial } from '@/widgets';
+import { Header, Navigation, SpeedDial } from '@/widgets';
 import Toolbar from '@mui/material/Toolbar';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
@@ -106,8 +106,8 @@ export const RootTemplate = ({
   return (
     <Container maxWidth="lg">
       <Box sx={{ display: 'flex' }}>
-        <MobileHeader open={open} drawerWidth={DRAWER_WIDTH} onMenuClick={handleDrawerToggle} />
-        <MobileNavigation
+        <Header open={open} drawerWidth={DRAWER_WIDTH} onMenuClick={handleDrawerToggle} />
+        <Navigation
           open={open}
           onOpen={handleDrawerToggle}
           onClose={handleDrawerClose}
@@ -121,7 +121,7 @@ export const RootTemplate = ({
             <Divider />
             <List>{buildMenu(Object.entries(SECONDARY_MENU_LIST))}</List>
           </div>
-        </MobileNavigation>
+        </Navigation>
         {children}
       </Box>
 

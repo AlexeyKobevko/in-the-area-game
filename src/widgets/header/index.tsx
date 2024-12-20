@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { AccountMenu } from '@/pages/home/ui/account-menu';
 import { styled } from '@mui/material/styles';
-import Container from '@mui/material/Container';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -15,28 +14,7 @@ interface AppBarProps extends MuiAppBarProps {
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: prop => prop !== 'open' && prop !== 'drawerWidth',
-})<AppBarProps>(({ theme, drawerWidth }) => ({
-  // [theme.breakpoints.up('md')]: {
-  //   zIndex: theme.zIndex.drawer + 1,
-  //   transition: theme.transitions.create(['width', 'margin'], {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.leavingScreen,
-  //   }),
-  // },
-  // variants: [
-  //   {
-  //     props: ({ open }) => open,
-  //     style: {
-  //       marginLeft: drawerWidth,
-  //       width: `calc(100% - ${drawerWidth}px)`,
-  //       transition: theme.transitions.create(['width', 'margin'], {
-  //         easing: theme.transitions.easing.sharp,
-  //         duration: theme.transitions.duration.enteringScreen,
-  //       }),
-  //     },
-  //   },
-  // ],
-}));
+})<AppBarProps>(() => ({}));
 
 interface IconButtonProps extends MuiIconButtonProps {
   open?: boolean;
@@ -65,7 +43,7 @@ export interface MobileHeaderProps {
   open: boolean;
 }
 
-export const MobileHeader = ({ drawerWidth, onMenuClick, open }: MobileHeaderProps) => {
+export const Header = ({ drawerWidth, onMenuClick, open }: MobileHeaderProps) => {
   return (
     <AppBar drawerWidth={drawerWidth} open={open} position="fixed">
       <Toolbar>
